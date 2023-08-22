@@ -8,12 +8,19 @@ public class HelloWorld {
     }
 
     public static Javalin getApp() {
-        return Javalin.create(config -> {
+        Javalin app = Javalin.create(config -> {
             config.plugins.enableDevLogging();
-        })
-                .get("/hello", ctx -> {
-                    String name = ctx.queryParamAsClass("name", String.class).getOrDefault("World");
-                    ctx.result("Hello, " + name + "!");
-                });
+        });
+        app.get("/hello", ctx -> {
+            String name = ctx.queryParamAsClass("name", String.class).getOrDefault("World");
+            ctx.result("Hello, " + name + "!");
+        });
+        app.get("users/{id}/post/{postId}", ctx -> {
+            int id = ctx.pathParamAsClass("id", Integer.class).getOrDefault(1);
+            int postId = ctx.pathParamAsClass("postId", Integer.class).getOrDefault(1);
+            ctx.result("Id = " + id + "\n" + "Post Id = " + postId);
+        });
+
+        return app;
     }
 }
