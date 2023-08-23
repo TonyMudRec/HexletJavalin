@@ -8,3 +8,4 @@ app/.gitattributes
 app/.idea
 app/.gradle
 .idea
+app/jte-classes

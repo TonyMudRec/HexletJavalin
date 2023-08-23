@@ -1,8 +1,5 @@
 package org.example.hexlet;
 
-import java.util.Random;
-import java.util.Locale;
-import com.github.javafaker.Faker;
 import org.example.hexlet.model.Course;
 
 import java.util.List;
@@ -14,17 +11,16 @@ public class Data {
     private static int idCounter = ITEMS_COUNT;
 
     public static List<Course> getCourses() {
-        Random random = new Random(123);
-        Faker faker = new Faker(new Locale("en"), random);
 
         List<Course> courses = new ArrayList<>();
 
-        for (int i = 0; i < ITEMS_COUNT; i++) {
-            Long id = (long) (i + 1);
-            String name = String.valueOf(faker.name());
-            Course course = new Course(id, name, name);
-            courses.add(course);
-        }
+//        for (int i = 1; i < ITEMS_COUNT; i++) {
+//            Long id = (long) (i);
+//            String name = "Course " + String.valueOf(i);
+//            String description = "description for course " + String.valueOf(i);
+//            Course course = new Course(id, name, description);
+//            courses.add(course);
+//        }
 
         return courses;
     }

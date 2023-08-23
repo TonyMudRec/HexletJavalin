@@ -18,6 +18,9 @@ public class HelloWorld {
         Javalin app = Javalin.create(config -> {
             config.plugins.enableDevLogging();
         });
+        app.get("/", ctx -> {
+           ctx.render("page.jte");
+        });
         app.get("/courses", ctx -> {
             var header = "Курсы по программированию";
             var page = new CoursesPage(courses, header);
