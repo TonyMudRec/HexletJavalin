@@ -1,6 +1,7 @@
 package org.example.hexlet;
 
 import io.javalin.Javalin;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.example.hexlet.dto.courses.CoursesPage;
 import org.example.hexlet.model.Course;
 
@@ -19,7 +20,7 @@ public class HelloWorld {
             config.plugins.enableDevLogging();
         });
         app.get("/", ctx -> {
-           ctx.render("page.jte");
+           ctx.render("layout/page.jte");
         });
         app.get("/courses", ctx -> {
             var header = "Курсы по программированию";
@@ -32,6 +33,14 @@ public class HelloWorld {
                     .filter(c -> c.getId() == id)
                     .findFirst().get();
             ctx.render("show.jte", Collections.singletonMap("course", course));
+        });
+        app.get("/getMyId/{id}", ctx -> {
+            String id = ctx.pathParam("id");
+//            ctx.contentType("html");
+//            ctx.result(id);
+            var escapedId = StringEscapeUtils.escapeHtml4(id);
+            ctx.contentType("text/html");
+            ctx.result(escapedId);
         });
 
         return app;
