@@ -23,8 +23,15 @@ public class HelloWorld {
            ctx.render("layout/page.jte");
         });
         app.get("/courses", ctx -> {
-            var header = "Курсы по программированию";
-            var page = new CoursesPage(courses, header);
+            String header = "Курсы по программированию";
+            String term = ctx.queryParam("term");
+            List<Course> filteredCourses = null;
+            if (term != null) {
+                filteredCourses = courses.stream()
+                        .filter(c -> c.getName().contains(term))
+                        .toList();
+            }
+            var page = new CoursesPage(filteredCourses == null ? courses : filteredCourses, header, term);
             ctx.render("index.jte", Collections.singletonMap("page", page));
         });
         app.get("/courses/{id}", ctx -> {

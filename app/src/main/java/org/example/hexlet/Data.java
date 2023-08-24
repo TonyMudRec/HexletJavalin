@@ -14,13 +14,13 @@ public class Data {
 
         List<Course> courses = new ArrayList<>();
 
-//        for (int i = 1; i < ITEMS_COUNT; i++) {
-//            Long id = (long) (i);
-//            String name = "Course " + String.valueOf(i);
-//            String description = "description for course " + String.valueOf(i);
-//            Course course = new Course(id, name, description);
-//            courses.add(course);
-//        }
+        for (int i = 1; i < ITEMS_COUNT; i++) {
+            Long id = (long) (i);
+            String name = "Course " + String.valueOf(i);
+            String description = "description for course " + String.valueOf(i);
+            Course course = new Course(id, name, description);
+            courses.add(course);
+        }
 
         return courses;
     }
