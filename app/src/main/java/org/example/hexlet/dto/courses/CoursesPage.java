@@ -1,7 +1,9 @@
 package org.example.hexlet.dto.courses;
 
 import java.util.List;
+import java.util.Map;
 
+import io.javalin.validation.ValidationError;
 import org.example.hexlet.model.Course;
 
 import lombok.AllArgsConstructor;
